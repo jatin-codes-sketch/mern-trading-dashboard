@@ -28,20 +28,20 @@ const userSchema=new mongoose.Schema({
     }
 },{timestamps:true})
 
-userSchema.pre("save",async function(){
-    if(!this.password.isModified("password"))return;
+userSchema.pre("save",async function(next){
+    if(!this.isModified("password"))return;
     this.password=await bcrypt.hash(this.password,10);
 })
 
 userSchema.methods.isPasswordCorrect=async function(password){
-    await bcrypt.compare(password,this.password);
+    return await bcrypt.compare(password,this.password);
 }
 
 userSchema.methods.generateAccessToken=function(){
     return jwt.sign(
         {
-            _id:this_id,
-            name:this.userName,
+            _id:this._id,
+            userName:this.userName,
             email:this.email,
         },
         process.env.ACCESS_TOKEN_SECRET,
@@ -54,9 +54,7 @@ userSchema.methods.generateAccessToken=function(){
 userSchema.methods.generateRefreshToken=function(){
     return jwt.sign(
         {
-            _id:this_id,
-            name:this.userName,
-            email:this.email,
+            _id:this._id,
         },
         process.env.REFRESH_TOKEN_SECRET,
         {

@@ -1,8 +1,17 @@
 import {Router} from "express"
-import { registerUser } from "../controllers/user.controller.js"
+import { registerUser,loginUser } from "../controllers/user.controller.js"
+import { verifyJWT } from "../middlewares/auth.middleware.js"
 
 const router=Router()
 
-router.route("/register").post(registerUser)
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+
+router.get("/me",verifyJWT,(req,res)=>{
+    res.status(200).json({
+        success:true,
+        user:req.user,
+    })
+})
 
 export default router
