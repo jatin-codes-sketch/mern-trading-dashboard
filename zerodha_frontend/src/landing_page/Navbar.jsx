@@ -1,25 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./style/navbar.css"
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg border-bottom fixed-top bg-white"
-      style={{ height: "64px" }}
-    >
+    <nav className="navbar navbar-expand-lg navbar-light border-bottom fixed-top bg-white py-3">
       <div className="container">
-        {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
             src="/media/logo.svg"
             alt="Zerodha Logo"
-            style={{ height: "24px" }}
+            style={{ height: "20px" }}
           />
         </Link>
 
-        {/* Toggler */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
@@ -30,14 +26,12 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Nav items */}
         <div
-          className="collapse navbar-collapse justify-content-end"
+          className="collapse navbar-collapse"
           id="navbarContent"
         >
-          <ul className="navbar-nav align-items-center gap-4">
-            {/* Kite button */}
-            <li className="nav-item">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-4 mt-4 mt-lg-0">
+            <li className="nav-item mb-2 mb-lg-0">
               <button
                 className="btn btn-link nav-link d-flex align-items-center gap-2 p-0"
                 style={{
@@ -54,33 +48,39 @@ const Navbar = () => {
                   alt="Kite"
                   style={{ width: "16px", height: "16px" }}
                 />
-                Go with Kite
+                <span className="d-lg-none d-xl-inline">Go with Kite</span>
+                <span className="d-none d-lg-inline d-xl-none">Kite</span>
               </button>
             </li>
 
-            {/* Other links */}
             <li className="nav-item">
-              <Link className="nav-link zerodha-link" to="/about">
+              <Link className="nav-link text-muted py-2 py-lg-0" to="/about">
                 About
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link zerodha-link" to="/product">
+              <Link className="nav-link text-muted py-2 py-lg-0" to="/product">
                 Product
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link zerodha-link" to="/pricing">
+              <Link className="nav-link text-muted py-2 py-lg-0" to="/pricing">
                 Pricing
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link zerodha-link" to="/support">
+              <Link className="nav-link text-muted py-2 py-lg-0" to="/support">
                 Support
               </Link>
+            </li>
+            
+            <li className="nav-item ms-lg-2">
+               <button className="btn border-0 p-0">
+                  <i className="fa fa-bars text-muted" aria-hidden="true"></i>
+               </button>
             </li>
           </ul>
         </div>

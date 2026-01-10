@@ -10,7 +10,7 @@ const SellActionWindow = ({ uid }) => {
 
   const handleSell = async () => {
     try {
-      await axios.post("http://localhost:5000/newOrder", {
+      await axios.post("http://localhost:5000/api/v1/newOrder", {
       name: uid,
       qty: Number(qty),
       price: Number(price),

@@ -31,7 +31,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="summary.png"
+                src="/summary.png"
                 alt="Portfolio summary"
                 className="w-full border rounded-sm"
               />
@@ -51,7 +51,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="watchlist.png"
+                src="/watchlist.png"
                 alt="Watchlist"
                 className="w-full border rounded-sm"
               />
@@ -71,7 +71,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="orders.png"
+                src="/orders.png"
                 alt="Orders"
                 className="w-full border rounded-sm"
               />
@@ -91,7 +91,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="positions.png"
+                src="/positions.png"
                 alt="Positions"
                 className="w-full border rounded-sm"
               />
@@ -111,7 +111,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="holdings.png"
+                src="/holdings.png"
                 alt="Holdings"
                 className="w-full border rounded-sm"
               />
@@ -131,7 +131,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="portfolio-bar.png"
+                src="/portfolio-bar.png"
                 alt="Investment vs value"
                 className="w-full border rounded-sm"
               />
@@ -151,7 +151,7 @@ const Apps = () => {
             </div>
             <div>
               <img
-                src="portfolio-donut.png"
+                src="/portfolio-donut.png"
                 alt="Portfolio allocation"
                 className="w-full border rounded-sm"
               />

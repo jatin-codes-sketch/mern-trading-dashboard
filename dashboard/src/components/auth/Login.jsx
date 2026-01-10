@@ -1,73 +1,136 @@
-import {useContext,useState} from 'react'
-import {useNavigate} from "react-router-dom"
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/axios";
-import AuthContext from "./AuthContext"
+import AuthContext from "./AuthContext";
 
 const Login = () => {
-    const {login}=useContext(AuthContext);
-    const navigate=useNavigate();
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    const handleSubmit=async(e)=>{
-        e.preventDefault();
-        setError("");
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
-        const res=await api.post("/users/login",{email,password})
-        
-        const {user,accessToken}=res.data.data;
-        login(user,accessToken);
-        navigate("/dashboard");
-    } catch (error) {
-        setError(
-            error.response?.data?.message || "Login failed. Try again."
-        )
-    }
-}
+      const res = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
-  return (
-     <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md w-80"
-      >
-        <h2 className="text-2xl font-semibold mb-4 text-center">
+      const { user, accessToken } = res.data.data;
+
+      
+      login(user, accessToken);
+
+      
+      navigate("/dashboard");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Login failed. Try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+return (
+  <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="w-full max-w-sm">
+      
+      {/* Header */}
+      <div className="text-center mb-6">
+        <img
+          src="kite-logo.svg"
+          alt="Kite"
+          className="mx-auto h-10 mb-3"
+        />
+        <h2 className="text-xl font-semibold text-gray-900">
           Login to Kite
         </h2>
+        <p className="text-sm text-gray-500 mt-1">
+          Zerodha’s fast and secure trading platform
+        </p>
+      </div>
 
+      {/* Card */}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white border border-gray-200 rounded-xl shadow-sm p-6"
+      >
         {error && (
-          <p className="text-red-600 text-sm mb-3">{error}</p>
+          <div className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2 text-center">
+            {error}
+          </div>
         )}
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border p-2 rounded mb-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* Email */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border p-2 rounded mb-4"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {/* Password */}
+        <div className="mb-5">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
 
+        {/* Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-2.5 rounded-md text-sm font-medium
+                     hover:bg-blue-700 transition disabled:opacity-60"
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
-    </div>
-  )
-}
 
-export default Login
+      {/* Footer */}
+      <p className="text-sm text-gray-600 text-center mt-5">
+        Don’t have an account?{" "}
+        <span
+          onClick={() => navigate("/signup")}
+          className="text-blue-600 font-medium cursor-pointer hover:underline"
+        >
+          Sign up
+        </span>
+      </p>
+
+      <p className="text-xs text-gray-400 text-center mt-4">
+        © {new Date().getFullYear()} Zerodha. All rights reserved.
+      </p>
+    </div>
+  </div>
+);
+
+
+};
+
+export default Login;

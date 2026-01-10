@@ -15,14 +15,14 @@ const Summary = () => {
 
   useEffect(() => {
   axios
-    .get("http://localhost:5000/summary")
+    .get("http://localhost:5000/api/v1/summary")
     .then(res => setSummary(res.data))
     .catch(err => console.log(err));
 }, [refreshKey]);
 
   useEffect(() => {
   axios
-    .get("http://localhost:5000/portfolio-allocation")
+    .get("http://localhost:5000/api/v1/portfolio-allocation")
     .then(res => setAllocation(res.data))
     .catch(err => console.log(err));
 }, []);

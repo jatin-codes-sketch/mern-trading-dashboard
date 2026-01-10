@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import GeneralContext from "./GeneralContext";
 import "./style/order.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const { refreshKey } = useContext(GeneralContext);
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/orders")
+      .get("http://localhost:5000/api/v1/orders")
       .then((res) => setOrders(res.data))
       .catch((err) => console.error("Failed to fetch orders", err));
-  }, []);
+  }, [refreshKey]); // 🔥 THIS IS THE KEY
 
   return (
     <div className="orders-container">
@@ -38,15 +40,11 @@ const Orders = () => {
 
             {orders.map((order) => (
               <tr key={order._id}>
-                <td className="stock-name">{order.name}</td>
+                <td>{order.name}</td>
                 <td>{order.qty}</td>
                 <td>₹ {order.price}</td>
                 <td>
-                  <span
-                    className={`order-badge ${
-                      order.mode === "BUY" ? "buy" : "sell"
-                    }`}
-                  >
+                  <span className={`order-badge ${order.mode === "BUY" ? "buy" : "sell"}`}>
                     {order.mode}
                   </span>
                 </td>

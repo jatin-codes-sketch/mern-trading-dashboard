@@ -9,12 +9,10 @@ import Dashboard from "./components/Dashboard";
 const App = () => {
   return (
     <Routes>
-      {/* Public routes */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
-      {/* Protected routes */}
       <Route
         path="/dashboard/*"
         element={

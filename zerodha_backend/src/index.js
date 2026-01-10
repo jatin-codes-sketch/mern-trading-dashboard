@@ -8,12 +8,12 @@ import { Position } from "./models/position.model.js"
 import {Order} from "./models/order.model.js"
 
 
-app.get("/allHoldings",async(req,res)=>{
+app.get("/api/v1/allHoldings",async(req,res)=>{
   const allHoldings=await Holding.find({})
   res.json(allHoldings);
 })
 
-app.get("/allPositions", async (req, res) => {
+app.get("/api/v1/AllPositions", async (req, res) => {
   try {
     const holdings = await Holding.find({});
 
@@ -32,7 +32,7 @@ app.get("/allPositions", async (req, res) => {
   }
 });
 
-app.post("/newOrder", async (req, res) => {
+app.post("/api/v1/newOrder", async (req, res) => {
   try {
     let { name, qty, price = 0, mode } = req.body;
 
@@ -127,7 +127,7 @@ app.post("/newOrder", async (req, res) => {
 
 
 
-app.get("/summary", async (req, res) => {
+app.get("/api/v1/summary", async (req, res) => {
   try {
     const holdings = await Holding.find({});
 
@@ -157,7 +157,7 @@ app.get("/summary", async (req, res) => {
 
 
 
-app.get("/orders", async (req, res) => {
+app.get("/api/v1/orders", async (req, res) => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 });
     res.json(orders);
@@ -166,7 +166,7 @@ app.get("/orders", async (req, res) => {
   }
 });
 
-app.get("/portfolio-allocation", async (req, res) => {
+app.get("/api/v1/portfolio-allocation", async (req, res) => {
   try {
     const holdings = await Holding.find({});
 

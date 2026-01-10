@@ -12,24 +12,25 @@ const BuyActionWindow = ({ uid }) => {
   const handleBuyClick = async () => {
     if (!stockQuantity || !stockPrice) return;
 
-    await axios.post("http://localhost:5000/newOrder", {
-      name: uid,
-      qty: Number(stockQuantity),
-      price: Number(stockPrice),
-      mode: "BUY",
-    });
+    try {
+      await axios.post("http://localhost:5000/api/v1/newOrder", {
+        name: uid,
+        qty: Number(stockQuantity),
+        price: Number(stockPrice),
+        mode: "BUY",
+      });
 
-    triggerRefresh();
-    closeAll();
-
+      triggerRefresh();
+      closeAll();
+    } catch (error) {
+      console.error("Order failed", error);
+    }
   };
 
   return (
     <>
-      {/* Backdrop */}
       <div className="kite-backdrop" onClick={closeAll}></div>
 
-      {/* Center Modal */}
       <div className="kite-container">
         <div className="kite-header">
           <h3>Buy {uid}</h3>
@@ -44,7 +45,7 @@ const BuyActionWindow = ({ uid }) => {
               <label>Quantity</label>
               <input
                 type="number"
-                placeholder="Enter quantity"
+                min="1"
                 value={stockQuantity}
                 onChange={(e) => setStockQuantity(e.target.value)}
               />
@@ -55,7 +56,6 @@ const BuyActionWindow = ({ uid }) => {
               <input
                 type="number"
                 step="any"
-                placeholder="Enter price"
                 value={stockPrice}
                 onChange={(e) => setStockPrice(e.target.value)}
               />
@@ -74,10 +74,7 @@ const BuyActionWindow = ({ uid }) => {
               Buy
             </button>
 
-            <button
-              className="kite-btn kite-cancel"
-              onClick={closeAll}
-            >
+            <button className="kite-btn kite-cancel" onClick={closeAll}>
               Cancel
             </button>
           </div>

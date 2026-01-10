@@ -103,10 +103,10 @@
 .sell,
 .action {
   font-size: 11px;
-  padding: 2px 6px;
+  padding: 4px 6px;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .buy {
