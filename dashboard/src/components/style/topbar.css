@@ -1,0 +1,57 @@
+/* ===== TOP BAR ===== */
+
+.topbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 56px;
+  width: 100%;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+  z-index: 100;
+}
+
+/* Left side indices */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Index blocks */
+.index-block {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.index {
+  font-weight: 600;
+  color: #333;
+}
+
+.index-points {
+  font-weight: 500;
+  color: #2ecc71; /* green by default */
+}
+
+.percent {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .topbar-left {
+    display: none;
+  }
+}

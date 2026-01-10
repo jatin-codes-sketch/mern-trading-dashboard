@@ -1,0 +1,88 @@
+/* ===== ORDERS PAGE ===== */
+
+.orders-container {
+  padding: 16px;
+}
+
+/* Title */
+.orders-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Table wrapper */
+.orders-table-wrapper {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.orders-table th {
+  background: #fafafa;
+  text-align: left;
+  padding: 10px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+}
+
+.orders-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #333;
+}
+
+.orders-table tr:hover {
+  background: #fcfcfc;
+}
+
+/* Empty state */
+.orders-empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #999;
+}
+
+/* Stock name */
+.stock-name {
+  font-weight: 500;
+}
+
+/* BUY / SELL badge */
+.order-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.order-badge.buy {
+  background: #e3f2fd;
+  color: #1e88e5;
+}
+
+.order-badge.sell {
+  background: #fdecea;
+  color: #e53935;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders-title {
+    font-size: 16px;
+  }
+
+  .orders-table {
+    font-size: 12px;
+  }
+}

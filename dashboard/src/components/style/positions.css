@@ -1,0 +1,67 @@
+/* ===== POSITIONS PAGE ===== */
+
+.positions-container {
+  padding: 16px;
+}
+
+/* Title */
+.positions-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Table wrapper */
+.positions-table-wrapper {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Table */
+.positions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.positions-table th {
+  background: #fafafa;
+  text-align: left;
+  padding: 10px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+}
+
+.positions-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #333;
+}
+
+.positions-table tr:hover {
+  background: #fcfcfc;
+}
+
+/* Profit / Loss */
+.profit {
+  color: #2ecc71;
+  font-weight: 500;
+}
+
+.loss {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .positions-title {
+    font-size: 16px;
+  }
+
+  .positions-table {
+    font-size: 12px;
+  }
+}

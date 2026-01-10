@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Orders.css"
+import "./style/order.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/orders")
+      .post("http://localhost:5000/orders")
       .then((res) => setOrders(res.data))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("Failed to fetch orders", err));
   }, []);
 
   return (
-    <div className="orders-page">
-      <h2 className="orders-title">Orders</h2>
+    <div className="orders-container">
+      <h3 className="orders-title">Orders</h3>
 
-      <div className="orders-card">
+      <div className="orders-table-wrapper">
         <table className="orders-table">
           <thead>
             <tr>
@@ -30,7 +30,7 @@ const Orders = () => {
           <tbody>
             {orders.length === 0 && (
               <tr>
-                <td colSpan="4" className="empty">
+                <td colSpan="4" className="orders-empty">
                   No orders placed yet
                 </td>
               </tr>
@@ -38,12 +38,12 @@ const Orders = () => {
 
             {orders.map((order) => (
               <tr key={order._id}>
-                <td className="stock">{order.name}</td>
+                <td className="stock-name">{order.name}</td>
                 <td>{order.qty}</td>
                 <td>₹ {order.price}</td>
                 <td>
                   <span
-                    className={`badge ${
+                    className={`order-badge ${
                       order.mode === "BUY" ? "buy" : "sell"
                     }`}
                   >

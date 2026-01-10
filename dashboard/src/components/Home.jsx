@@ -4,8 +4,8 @@ import Dashboard from "./Dashboard"
 const Home = () => {
   return (
     <>
-      <TopBar/>
-      <Dashboard/>
+      {/* <TopBar/> */}
+      {/* <Dashboard/> */}
     </>
   )
 }

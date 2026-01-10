@@ -1,62 +1,65 @@
-import {useState,useEffect,useContext} from 'react'
-import axios from 'axios';
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import GeneralContext from "./GeneralContext";
-
+import "./style/positions.css";
 
 const Positions = () => {
-  
   const { refreshKey } = useContext(GeneralContext);
-  const [Position, setPosition] = useState([])
+  const [positions, setPositions] = useState([]);
 
-  useEffect(()=>{
-  axios.get("http://localhost:5000/allPositions")
-  .then((res)=>{
-    setPosition(res.data);
-  })
-  },[refreshKey])
-
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/positions")
+      .then((res) => {
+        setPositions(res.data);
+      })
+      .catch((err) => console.error("Failed to fetch positions", err));
+  }, [refreshKey]);
 
   return (
-    <>
-      <h3  className='title'>Positions ({Position.length})</h3>
+    <div className="positions-container">
+      <h3 className="positions-title">
+        Positions ({positions.length})
+      </h3>
 
-      <div className="order-table">
-        <table>
-          <tr>
-            <th>Product</th>
-            <th>Instrument</th>
-            <th>Qty.</th>
-            <th>Avg.</th>
-            <th>LTP</th>
-            <th>P&L</th>
-            <th>Chg.</th>
-          </tr>
+      <div className="positions-table-wrapper">
+        <table className="positions-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Instrument</th>
+              <th>Qty.</th>
+              <th>Avg.</th>
+              <th>LTP</th>
+              <th>P&amp;L</th>
+              <th>Chg.</th>
+            </tr>
+          </thead>
 
-          {Position.map((stock, index) => {
-            const curValue = stock.price * stock.qty;
-            const isProfit = curValue - stock.avg * stock.qty >= 0.0;
-            const profClass = isProfit ? "profit" : "loss";
-            const dayClass = stock.isLoss ? "loss" : "profit";
+          <tbody>
+            {positions.map((stock, index) => {
+              const curValue = stock.price * stock.qty;
+              const rowPnl = curValue - stock.avg * stock.qty;
+              const profClass = rowPnl >= 0 ? "profit" : "loss";
+              const dayClass = stock.isLoss ? "loss" : "profit";
 
-            return (
-              <tr key={index}>
-                <td>{stock.product}</td>
-                <td>{stock.name}</td>
-                <td>{stock.qty}</td>
-                <td>{stock.avg.toFixed(2)}</td>
-                <td>{stock.price.toFixed(2)}</td>
-                <td className={profClass}>
-                  {(curValue - stock.avg * stock.qty).toFixed(2)}
-                </td>
-                <td className={dayClass}>{stock.day}</td>
-              </tr>
-            );
-          })}
+              return (
+                <tr key={index}>
+                  <td>{stock.product}</td>
+                  <td>{stock.name}</td>
+                  <td>{stock.qty}</td>
+                  <td>{stock.avg.toFixed(2)}</td>
+                  <td>{stock.price.toFixed(2)}</td>
+                  <td className={profClass}>{rowPnl.toFixed(2)}</td>
+                  <td className={dayClass}>{stock.day}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Positions
+export default Positions;

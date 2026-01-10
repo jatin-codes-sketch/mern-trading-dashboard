@@ -1,65 +1,88 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav
-      class="navbar navbar-expand-lg border-bottom p-3 fixed-top"
-      style={{ backgroundColor: "#FFF" }}
+      className="navbar navbar-expand-lg border-bottom fixed-top bg-white"
+      style={{ height: "64px" }}
     >
-      <div class="container">
+      <div className="container">
+        {/* Logo */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img
+            src="/media/logo.svg"
+            alt="Zerodha Logo"
+            style={{ height: "24px" }}
+          />
+        </Link>
+
+        {/* Toggler */}
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
+
+        {/* Nav items */}
         <div
-          class="collapse navbar-collapse d-flex justify-content-between ps-4"
-          id="navbarTogglerDemo01"
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarContent"
         >
-          <Link class="navbar-brand" to="/">
-            <img src="media/logo.svg" alt="Logo" style={{ width: "30%" }} />
-          </Link>
-          <form class="d-flex fs-5">
-            <ul class="navbar-nav mb-2 mb-lg-0 ">
-              <li class="nav-item">
-                <Link
-                  class="nav-link me-5"
-                  aria-current="page"
-                  to='signup'
-                  style={{ color: "#666666" }}
-                >
-                  Signup
-                </Link>
-              </li>
-              <li class="nav-item me-4">
-                <Link class="nav-link" to='/about' style={{ color: "#666666" }}>
-                  About
-                </Link>
-              </li>
-              <li class="nav-item me-4">
-                <Link class="nav-link" to='/product' style={{ color: "#666666" }}>
-                  Product
-                </Link>
-              </li>
-              <li class="nav-item me-4">
-                <Link class="nav-link" to='/pricing' style={{ color: "#666666" }}>
-                  Pricing
-                </Link>
-              </li>
-              <li class="nav-item me-4">
-                <Link class="nav-link" to='/support' style={{ color: "#666666" }}>
-                  Support
-                </Link>
-              </li>
-            </ul>
-          </form>
+          <ul className="navbar-nav align-items-center gap-4">
+            {/* Kite button */}
+            <li className="nav-item">
+              <button
+                className="btn btn-link nav-link d-flex align-items-center gap-2 p-0"
+                style={{
+                  color: "#387ed1",
+                  fontWeight: "500",
+                  textDecoration: "none",
+                }}
+                onClick={() => {
+                  window.location.href = "http://localhost:5173/signup";
+                }}
+              >
+                <img
+                  src="/media/kite-logo.svg"
+                  alt="Kite"
+                  style={{ width: "16px", height: "16px" }}
+                />
+                Go with Kite
+              </button>
+            </li>
+
+            {/* Other links */}
+            <li className="nav-item">
+              <Link className="nav-link zerodha-link" to="/about">
+                About
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link zerodha-link" to="/product">
+                Product
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link zerodha-link" to="/pricing">
+                Pricing
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link zerodha-link" to="/support">
+                Support
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

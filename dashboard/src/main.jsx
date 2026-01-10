@@ -1,17 +1,17 @@
-import { createRoot } from 'react-dom/client'
-import { GeneralContextProvider } from './components/GeneralContext.jsx'
-import './index.css'
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
 
-import Home from "./components/Home.jsx"
+import { AuthProvider } from "./components/auth/AuthContext.jsx";
+import { GeneralContextProvider } from "./components/GeneralContext.jsx";
+import App from "./App.jsx";
 
-createRoot(document.getElementById('root')).render(
-  <GeneralContextProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<Home/>}/>
-      </Routes>
-  </BrowserRouter>
-  </GeneralContextProvider>
-  
-)
+createRoot(document.getElementById("root")).render(
+  <AuthProvider>
+    <GeneralContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </GeneralContextProvider>
+  </AuthProvider>
+);

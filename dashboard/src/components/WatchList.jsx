@@ -8,6 +8,7 @@ import {
 
 import { watchlist } from "./data/data";
 import GeneralContext from "./GeneralContext";
+import "./style/watchlist.css";
 
 /* =========================
    WatchList
@@ -19,8 +20,6 @@ const WatchList = () => {
       <div className="search-container">
         <input
           type="text"
-          name="search"
-          id="search"
           placeholder="Search eg: infy, bse, nifty fut weekly, gold mcx"
           className="search"
         />
@@ -43,36 +42,35 @@ export default WatchList;
 ========================= */
 
 const WatchListItem = ({ stock }) => {
-  const [showWatchlistActions, setShowWatchlistActions] = useState(false);
+  const [showActions, setShowActions] = useState(false);
 
   return (
     <li
-      onMouseEnter={() => setShowWatchlistActions(true)}
-      onMouseLeave={() => setShowWatchlistActions(false)}
+      className="watchlist-item"
+      onMouseEnter={() => setShowActions(true)}
+      onMouseLeave={() => setShowActions(false)}
     >
       <div className="item">
         <p className={stock.isDown ? "down" : "up"}>{stock.name}</p>
 
         <div className="itemInfo">
           <span className="percent">{stock.percent}</span>
-
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
           ) : (
             <KeyboardArrowUp className="up" />
           )}
-
           <span className="price">{stock.price}</span>
         </div>
       </div>
 
-      {showWatchlistActions && <WatchListActions uid={stock.name} />}
+      {showActions && <WatchListActions uid={stock.name} />}
     </li>
   );
 };
 
 /* =========================
-   Action Buttons (BUY / SELL)
+   Action Buttons
 ========================= */
 
 const WatchListActions = ({ uid }) => {
@@ -80,43 +78,19 @@ const WatchListActions = ({ uid }) => {
 
   return (
     <span className="actions">
-      {/* BUY */}
-      <Tooltip
-        title="Buy (B)"
-        placement="top"
-        arrow
-        TransitionComponent={Grow}
-      >
-        <button
-          className="buy"
-          onClick={() => openBuyWindow(uid)}
-        >
+      <Tooltip title="Buy (B)" arrow TransitionComponent={Grow}>
+        <button className="buy" onClick={() => openBuyWindow(uid)}>
           Buy
         </button>
       </Tooltip>
 
-      {/* SELL */}
-      <Tooltip
-        title="Sell (S)"
-        placement="top"
-        arrow
-        TransitionComponent={Grow}
-      >
-        <button
-          className="sell"
-          onClick={() => openSellWindow(uid)}
-        >
+      <Tooltip title="Sell (S)" arrow TransitionComponent={Grow}>
+        <button className="sell" onClick={() => openSellWindow(uid)}>
           Sell
         </button>
       </Tooltip>
 
-      {/* ANALYTICS */}
-      <Tooltip
-        title="Analytics (A)"
-        placement="top"
-        arrow
-        TransitionComponent={Grow}
-      >
+      <Tooltip title="Analytics (A)" arrow TransitionComponent={Grow}>
         <button className="action">
           <BarChartOutlined className="icon" />
         </button>

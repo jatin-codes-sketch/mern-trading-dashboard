@@ -1,0 +1,7 @@
+.dashboard-container {
+  padding-top: 56px; /* height of TopBar */
+}
+
+.content {
+  margin-left: 320px; /* watchlist width */
+}

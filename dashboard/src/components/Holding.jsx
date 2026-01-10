@@ -1,7 +1,7 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import GeneralContext from "./GeneralContext";
-
+import "./style/holding.css";
 
 const Holding = () => {
   const [allHoldings, setAllHoldings] = useState([]);
@@ -9,7 +9,7 @@ const Holding = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allHoldings")
+      .get("http://localhost:5000/AllHoldings")
       .then((res) => {
         setAllHoldings(res.data);
       })
@@ -17,7 +17,6 @@ const Holding = () => {
         console.error("Failed to fetch holdings", err);
       });
   }, [refreshKey]);
-
 
   const totalInvestment = allHoldings.reduce(
     (acc, stock) => acc + stock.avg * stock.qty,
@@ -30,17 +29,16 @@ const Holding = () => {
   );
 
   const pnl = currentValue - totalInvestment;
-  const pnlPercent = totalInvestment
-    ? (pnl / totalInvestment) * 100
-    : 0;
-
+  const pnlPercent = totalInvestment ? (pnl / totalInvestment) * 100 : 0;
   const pnlClass = pnl >= 0 ? "profit" : "loss";
 
-
   return (
-    <>
-      <h3 className="title">Holdings ({allHoldings.length})</h3>
+    <div className="holding-container">
+      <h3 className="holding-title">
+        Holdings ({allHoldings.length})
+      </h3>
 
+      {/* Table */}
       <div className="order-table">
         <table>
           <thead>
@@ -60,8 +58,7 @@ const Holding = () => {
             {allHoldings.map((stock, index) => {
               const curValue = stock.price * stock.qty;
               const rowPnl = curValue - stock.avg * stock.qty;
-              const isProfit = rowPnl >= 0;
-              const profClass = isProfit ? "profit" : "loss";
+              const profClass = rowPnl >= 0 ? "profit" : "loss";
               const dayClass = stock.isLoss ? "loss" : "profit";
 
               return (
@@ -81,47 +78,31 @@ const Holding = () => {
         </table>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-  
-  {/* Total Investment */}
-  <div className="bg-white rounded-lg p-4 shadow-sm">
-    <h5 className="text-lg font-semibold text-gray-900">
-      ₹
-      {totalInvestment.toLocaleString("en-IN", {
-        minimumFractionDigits: 2,
-      })}
-    </h5>
-    <p className="text-sm text-gray-500 mt-1">Total investment</p>
-  </div>
+      {/* Summary cards */}
+      <div className="holding-summary">
+        <div className="summary-card">
+          <h5>
+            ₹{totalInvestment.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+          </h5>
+          <p>Total investment</p>
+        </div>
 
-  {/* Current Value */}
-  <div className="bg-white rounded-lg p-4 shadow-sm">
-    <h5 className="text-lg font-semibold text-gray-900">
-      ₹
-      {currentValue.toLocaleString("en-IN", {
-        minimumFractionDigits: 2,
-      })}
-    </h5>
-    <p className="text-sm text-gray-500 mt-1">Current value</p>
-  </div>
+        <div className="summary-card">
+          <h5>
+            ₹{currentValue.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+          </h5>
+          <p>Current value</p>
+        </div>
 
-  {/* P&L */}
-  <div className="bg-white rounded-lg p-4 shadow-sm">
-    <h5 className={`text-lg font-semibold ${pnlClass}`}>
-      ₹
-      {pnl.toLocaleString("en-IN", {
-        minimumFractionDigits: 2,
-      })}{" "}
-      <span className="text-sm font-medium">
-        ({pnlPercent.toFixed(2)}%)
-      </span>
-    </h5>
-    <p className="text-sm text-gray-500 mt-1">P&amp;L</p>
-  </div>
-
-</div>
-
-    </>
+        <div className="summary-card">
+          <h5 className={pnlClass}>
+            ₹{pnl.toLocaleString("en-IN", { minimumFractionDigits: 2 })}{" "}
+            <span>({pnlPercent.toFixed(2)}%)</span>
+          </h5>
+          <p>P&amp;L</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,101 @@
+/* ===== HOLDING PAGE ===== */
+
+.holding-container {
+  padding: 16px;
+}
+
+/* Title */
+.holding-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ===== TABLE ===== */
+
+.order-table {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.order-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.order-table th {
+  background: #fafafa;
+  text-align: left;
+  padding: 10px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+}
+
+.order-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.order-table tr:hover {
+  background: #fcfcfc;
+}
+
+/* ===== PROFIT / LOSS ===== */
+
+.profit {
+  color: #2ecc71;
+  font-weight: 500;
+}
+
+.loss {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* ===== SUMMARY ===== */
+
+.holding-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 14px;
+}
+
+.summary-card h5 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.summary-card span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.summary-card p {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .holding-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .order-table table {
+    font-size: 12px;
+  }
+}

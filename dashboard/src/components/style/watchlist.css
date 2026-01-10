@@ -1,0 +1,137 @@
+/* ===== WATCHLIST SIDEBAR ===== */
+
+.watchlist-container {
+  position: fixed;
+  top: 56px;                 /* below TopBar */
+  left: 0;
+
+  width: 320px;
+  height: calc(100vh - 56px);
+
+  background: #ffffff;
+  border-right: 1px solid #e5e5e5;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+/* ===== SEARCH ===== */
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.search {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.counts {
+  font-size: 11px;
+  margin-left: 8px;
+  color: #888;
+}
+
+/* ===== LIST ===== */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.watchlist-item {
+  position: relative;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.watchlist-item:hover {
+  background: #fafafa;
+}
+
+/* ===== ITEM ===== */
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.price {
+  font-weight: 500;
+}
+
+/* ===== UP / DOWN ===== */
+
+.up {
+  color: #2ecc71;
+}
+
+.down {
+  color: #e74c3c;
+}
+
+/* ===== ACTION BUTTONS ===== */
+
+.actions {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.buy,
+.sell,
+.action {
+  font-size: 11px;
+  padding: 2px 6px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.buy {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.sell {
+  background: #fdecea;
+  color: #c62828;
+}
+
+.action {
+  background: #f5f5f5;
+  color: #555;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .watchlist-container {
+    display: none;
+  }
+}
