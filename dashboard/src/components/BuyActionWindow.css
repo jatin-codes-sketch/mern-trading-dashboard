@@ -1,0 +1,140 @@
+/* Backdrop */
+.kite-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
+}
+
+/* Center modal */
+.kite-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: scaleIn 0.2s ease-out;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* Header */
+.kite-header {
+  background: #4184f3;
+  color: #fff;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kite-header h3 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.kite-close {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Body */
+.kite-body {
+  padding: 20px;
+}
+
+.kite-inputs {
+  display: flex;
+  gap: 16px;
+}
+
+.kite-field {
+  flex: 1;
+}
+
+.kite-field label {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.kite-field input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.kite-field input:focus {
+  outline: none;
+  border-color: #4184f3;
+}
+
+/* Footer */
+.kite-footer {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+.kite-footer span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Buttons */
+.kite-btn {
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.kite-buy {
+  background: #4184f3;
+  color: #fff;
+}
+
+.kite-buy:disabled {
+  background: #9bbcf7;
+  cursor: not-allowed;
+}
+
+.kite-cancel {
+  background: #e0e0e0;
+  margin-left: 8px;
+}
+
+.kite-header.red {
+  background: #e53935;
+}
+
+.sell-btn {
+  background: #e53935;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
