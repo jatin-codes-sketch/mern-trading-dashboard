@@ -1,17 +1,13 @@
-/* ===== HOLDING PAGE ===== */
-
 .holding-container {
   padding: 16px;
 }
 
-/* Title */
 .holding-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
 }
 
-/* ===== TABLE ===== */
 
 .order-table {
   background: #fff;
@@ -44,7 +40,6 @@
   background: #fcfcfc;
 }
 
-/* ===== PROFIT / LOSS ===== */
 
 .profit {
   color: #2ecc71;
@@ -56,7 +51,6 @@
   font-weight: 500;
 }
 
-/* ===== SUMMARY ===== */
 
 .holding-summary {
   display: grid;
@@ -88,7 +82,7 @@
   color: #777;
 }
 
-/* ===== RESPONSIVE ===== */
+
 
 @media (max-width: 768px) {
   .holding-summary {

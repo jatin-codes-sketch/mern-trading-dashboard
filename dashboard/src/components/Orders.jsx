@@ -12,7 +12,7 @@ const Orders = () => {
       .get("http://localhost:5000/api/v1/orders")
       .then((res) => setOrders(res.data))
       .catch((err) => console.error("Failed to fetch orders", err));
-  }, [refreshKey]); // 🔥 THIS IS THE KEY
+  }, [refreshKey]); 
 
   return (
     <div className="orders-container">

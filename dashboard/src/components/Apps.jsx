@@ -3,7 +3,6 @@ const Apps = () => {
     <div className="bg-white min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-10">
 
-        {/* Header */}
         <header className="mb-10">
           <h1 className="text-2xl font-medium text-gray-900 mb-2">
             Understanding the Kite Dashboard
@@ -14,10 +13,8 @@ const Apps = () => {
           </p>
         </header>
 
-        {/* Sections */}
         <div className="space-y-14">
 
-          {/* Summary */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -38,7 +35,6 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Watchlist */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -58,7 +54,6 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Orders */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -78,7 +73,6 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Positions */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -98,7 +92,7 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Holdings */}
+          
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -118,7 +112,7 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Bar Chart */}
+        
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b pb-10">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">
@@ -138,7 +132,7 @@ const Apps = () => {
             </div>
           </section>
 
-          {/* Donut Chart */}
+         
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-lg font-medium text-gray-900 mb-2">

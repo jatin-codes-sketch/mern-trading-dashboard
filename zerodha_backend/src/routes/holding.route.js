@@ -1,10 +1,14 @@
-// import { Router } from "express";
-// import { getHoldings } from "../controllers/holding.controller.js";
-// import { verifyJWT } from "../middlewares/auth.middleware.js";
+import express from "express";
+import {
+  getAllHoldings,
+  getAllPositions,
+  getPortfolioAllocation,
+} from "../controllers/holding.controller.js";
 
-// const router = Router();
+const router = express.Router();
 
-// router.get("/", verifyJWT, getHoldings);
+router.get("/allHoldings", getAllHoldings);
+router.get("/AllPositions", getAllPositions);
+router.get("/portfolio-allocation", getPortfolioAllocation);
 
-// export default router;
-// // 
+export default router;

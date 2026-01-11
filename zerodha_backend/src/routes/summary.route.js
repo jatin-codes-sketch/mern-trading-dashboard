@@ -1,7 +1,8 @@
-// import { Router } from "express";
-// import { getSummary } from "../controllers/summary.controller.js";
+import express from "express";
+import { getSummary } from "../controllers/summary.controller.js";
 
-// const router = Router();
-// router.get("/", getSummary);
+const router = express.Router();
 
-// export default router;
+router.get("/summary", getSummary);
+
+export default router;

@@ -21,7 +21,7 @@ const Signup = () => {
         password,
       });
 
-      // Redirect to login after signup
+      
       navigate("/login");
     } catch (err) {
       setError(
@@ -34,7 +34,7 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-sm">
         
-        {/* Heading */}
+        
         <div className="text-center mb-6">
           <img
             src="kite-logo.svg"
@@ -49,7 +49,7 @@ const Signup = () => {
           </p>
         </div>
 
-        {/* Card */}
+        
         <form
           onSubmit={handleSubmit}
           className="bg-white border border-gray-200 rounded-xl shadow-sm p-6"
@@ -60,7 +60,7 @@ const Signup = () => {
             </div>
           )}
 
-          {/* Username */}
+          
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Username
@@ -76,7 +76,7 @@ const Signup = () => {
             />
           </div>
 
-          {/* Email */}
+          
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Email
@@ -92,7 +92,7 @@ const Signup = () => {
             />
           </div>
 
-          {/* Password */}
+          
           <div className="mb-5">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Password
@@ -108,7 +108,7 @@ const Signup = () => {
             />
           </div>
 
-          {/* Signup Button */}
+          
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2.5 rounded-md text-sm font-medium
@@ -118,7 +118,7 @@ const Signup = () => {
           </button>
         </form>
 
-        {/* Login Redirect */}
+        
         <p className="text-sm text-gray-600 text-center mt-5">
           Already have an account?{" "}
           <Link

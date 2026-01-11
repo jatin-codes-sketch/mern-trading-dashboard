@@ -10,9 +10,6 @@ import { watchlist } from "./data/data";
 import GeneralContext from "./GeneralContext";
 import "./style/watchlist.css";
 
-/* =========================
-   WatchList
-========================= */
 
 const WatchList = () => {
   return (
@@ -37,9 +34,6 @@ const WatchList = () => {
 
 export default WatchList;
 
-/* =========================
-   WatchList Item
-========================= */
 
 const WatchListItem = ({ stock }) => {
   const [showActions, setShowActions] = useState(false);
@@ -69,9 +63,6 @@ const WatchListItem = ({ stock }) => {
   );
 };
 
-/* =========================
-   Action Buttons
-========================= */
 
 const WatchListActions = ({ uid }) => {
   const { openBuyWindow, openSellWindow } = useContext(GeneralContext);

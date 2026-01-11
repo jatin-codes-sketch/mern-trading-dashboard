@@ -34,12 +34,9 @@ const Summary = () => {
   <div className="summary-page">
     <div className="summary-container">
 
-      {/* Header */}
       <h1 className="greeting">Hi, Zerodha</h1>
 
-      {/* Equity & Commodity (unchanged – still static for now) */}
       <div className="balance-section">
-        {/* Equity */}
         <div className="balance-card">
           <div className="card-header">
             <span className="icon">🕒</span>
@@ -65,7 +62,6 @@ const Summary = () => {
           </div>
         </div>
 
-        {/* Commodity */}
         <div className="balance-card">
           <div className="card-header">
             <span className="icon">💧</span>
@@ -94,7 +90,6 @@ const Summary = () => {
 
       <hr className="divider" />
 
-      {/* Holdings */}
       <div className="holdings-section">
         <div className="holdings-header">
           <span className="icon">📦</span>

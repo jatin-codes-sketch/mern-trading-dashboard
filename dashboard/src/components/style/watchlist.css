@@ -1,8 +1,6 @@
-/* ===== WATCHLIST SIDEBAR ===== */
-
 .watchlist-container {
   position: fixed;
-  top: 56px;                 /* below TopBar */
+  top: 56px;                 
   left: 0;
 
   width: 320px;
@@ -16,7 +14,6 @@
   z-index: 10;
 }
 
-/* ===== SEARCH ===== */
 
 .search-container {
   display: flex;
@@ -39,7 +36,6 @@
   color: #888;
 }
 
-/* ===== LIST ===== */
 
 .list {
   list-style: none;
@@ -59,7 +55,6 @@
   background: #fafafa;
 }
 
-/* ===== ITEM ===== */
 
 .item {
   display: flex;
@@ -78,7 +73,6 @@
   font-weight: 500;
 }
 
-/* ===== UP / DOWN ===== */
 
 .up {
   color: #2ecc71;
@@ -88,7 +82,7 @@
   color: #e74c3c;
 }
 
-/* ===== ACTION BUTTONS ===== */
+
 
 .actions {
   position: absolute;
@@ -128,7 +122,7 @@
   font-size: 16px;
 }
 
-/* ===== RESPONSIVE ===== */
+
 
 @media (max-width: 900px) {
   .watchlist-container {

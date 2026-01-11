@@ -11,26 +11,22 @@ dotenv.config({ path: "../../.env" });
 
 const seedOnce = async () => {
   try {
-    // 1️⃣ Connect DB
     await mongoose.connect(`${process.env.MONGO_URI}/${DB_NAME}`);
-    console.log("✅ MongoDB connected");
+    console.log("MongoDB connected");
 
-    // 2️⃣ CLEAR OLD DATA (IMPORTANT)
     await Holding.deleteMany({});
     await Position.deleteMany({});
 
-    console.log("🧹 Old data deleted");
+    console.log("Old data deleted");
 
-    // 3️⃣ INSERT FRESH DATA
     await Holding.insertMany(holdings);
     await Position.insertMany(positions);
 
-    console.log("🌱 Fresh data inserted successfully");
+    console.log("Fresh data inserted successfully");
 
-    // 4️⃣ Exit process
     process.exit(0);
   } catch (error) {
-    console.error("❌ Seeding failed:", error);
+    console.error("Seeding failed:", error);
     process.exit(1);
   }
 };

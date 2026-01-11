@@ -16,10 +16,8 @@ const Dashboard = () => {
 
       <div className="content">
         <Routes>
-          {/* Default dashboard route */}
+          
           <Route index element={<Summary/>} />
-
-          {/* Relative paths (VERY IMPORTANT) */}
           <Route path="orders" element={<Orders />} />
           <Route path="holdings" element={<Holding />} />
           <Route path="positions" element={<Positions />} />

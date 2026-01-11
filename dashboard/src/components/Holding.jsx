@@ -38,7 +38,6 @@ const Holding = () => {
         Holdings ({allHoldings.length})
       </h3>
 
-      {/* Table */}
       <div className="order-table">
         <table>
           <thead>
@@ -78,7 +77,6 @@ const Holding = () => {
         </table>
       </div>
 
-      {/* Summary cards */}
       <div className="holding-summary">
         <div className="summary-card">
           <h5>

@@ -1,6 +1,4 @@
-// import {Position} from "../models/position.model.js"
-// import {Holding} from "../models/holding.model.js"
-// import {Order} from "../models/order.model.js"
+
 
 export const holdings = [
   {
@@ -79,63 +77,3 @@ export const positions = [
     isLoss: true,
   },
 ];
-
-
-// export const seedHoldings=async()=>{
-//     try {
-//         const operations=holdings.map((item)=>({
-//             updateOne:{
-//                 filter:{name:item.name},
-//                 update:{$set:item},
-//                 upsert:true
-//             },
-//         }))
-
-//         await Holding.bulkWrite(operations);
-//         console.log("Holding upserted successfully");
-        
-//     } catch (error) {
-//      console.log("Holding data insertion error, ",error)   
-//     }
-// };
-
-// export const seedPositions=async()=>{
-//     try {
-//         const operations=positions.map((item)=>({
-//             updateOne:{
-//                 filter:{name:item.name},
-//                 update:{$set:item},
-//                 upsert:true
-//             }
-//         }))
-
-//         await Position.bulkWrite(operations);
-//         console.log("Position upserted successfully");
-//     } catch (error) {
-//          console.log("Position data insertion error, ",error)   
-//     }
-// }
-
-// export const seedOrders=async()=>{
-//     try {
-//         const operations = orders.map((item)=>({
-//             updateOne:{
-//                 filter:{name:item.name},
-//                 update:{$set:item},
-//                 upsert:true
-//             }
-//         }))
-
-//         await Order.bulkWrite(operations);
-//         console.log("Order upserted successfully");
-        
-//     } catch (error) {
-//         console.log("Order data insertion error, ",error);
-        
-//     }
-// }
-
-
-
-
-
